@@ -1,64 +1,171 @@
-#! /usrs/bin/env python3
-
-# TODO: ADD FEATURES LIST
-# Record date checked out
-# Record date return, If book past 14 days it'll give PAST DUE Notice and AMOUNT OWED
-# Search Engine, and tell location
-# read excerpt from book
-# Donate books
-
-
-# count how many days between checkout date and return day
-return_days = 0
-
-# Library books
-
-# mystery = dict(
-#   I1001={'TITLE': "The Last Thing He Told Me ", 'AUTHOR': 'Laura Dave'},
-#   I1002={'TITLE': "Sweet Water ", 'AUTHOR': 'Cara Reinard'},
-#  I1003={'TITLE': "Local Woman missing ", 'AUTHOR': 'Mary Kubica'},
-# I1004={'TITLE': "The Maidens", 'AUTHOR': 'Alex Micaelides '}
-# )
-
 mystery = {
     'I1001': {'TITLE': "The Last Thing He Told Me ", 'AUTHOR': 'Laura Dave'},
-    'I1002': {'TITLE': "Sweet Water ", 'AUTHOR': 'Cara Reinard'},
-    'I1003': {'TITLE': "Local Woman missing ", 'AUTHOR': 'Mary Kubica'},
-    'I1004': {'TITLE': "The Maidens", 'AUTHOR': 'Alex Micaelides '}
+    'I1002': {'TITTLE': "Sweet Water ", 'AUTHOR': 'Cara Reinard'},
+    'I1003': {'TITTLE': "Local Woman missing ", 'AUTHOR': 'Mary Kubica'},
+    'I1004': {'TITTLE': "The Maidens", 'AUTHOR': 'Alex Micaelides '}
 }
 
 fantasy = {
-    "2007": "The Queens's Weapons -Anne Bishop",
-    "2008": "The Last Druid -Terry Brooks",
-    "2009": "A Deadly Education -Naomi Novik",
-    "2010": "Spy,Spy Again - Mercedes Lackey"
+    "2007": {'TITLE': 'The Queens Weapons', 'AUTHOR': 'Anne Bisho'},
+    "2008": {'TITLE': 'The Last Druid', 'AUTHOR': 'Terry Brooks'},
+    "2009": {'TITLE': 'A Deadly Education', 'AUTHOR': 'Naomi Novik'},
+    "2010": {'TITLE': 'Spy,Spy Again', 'AUTHOR': 'Mercedes Lackey'}
 }
 
 romance = {
-    "3002": "Pride and Prejudice -Jane Austen",
-    "3004": "Jane Eyre -Charlotte Bronte",
-    "3006": "Gone with the Wind -Margaret Mitchell",
-    "3008": "The Notebook -Nicholas Sparks"
+    "3002": {'TITLE': 'Pride and Prejudice', 'AUTHOR': 'Jane Austen'},
+    "3004": {'TITLE': 'Jane Eyre', 'AUTHOR': 'Charlotte Bronte'},
+    "3006": {'TITLE': 'Gone with the Wind', 'AUTHOR': 'Margaret Mitchell'},
+    "3008": {'TITLE': 'The Notebook', 'AUTHOR': 'Nicholas Sparks'}
 }
 
 textbook = {
-    "4003": "Python Crash Course - Eric Matthews",
-    "4004": "Automate the Boring Stuff with Python -Al Sweigart",
-    "4005": "Learning Python -Mark Lutz",
-    "4006": "Head-First Python -Paul Barry",
+    "4003": {'TITLE': 'Python Crash Course', 'AUTHOR': 'Eric Matthews'},
+    "4004": {'TITLE': 'Automate the Boring Stuff with Python', 'AUTHOR': 'Al Sweigart'},
+    "4005": {'TITLE': 'Learning Python', 'AUTHOR': 'Mark Lutz'},
+    "4006": {'TITLE': 'Head-First Python', 'AUTHOR': 'Paul Barry'},
 }
 
-user_books = []
-test_book = {}
-# test_book = dict({})
-# count how many book checked out
-book_checkout_count = 0
+# TODO: Create empty dictionary to add and return books
+return_add_books = {}
 
 
-# Computer Lab
+# TODO: CREATE COMPUTER FUNCTION
+def computer():
+    print("Welcome to the Computer Lab")
 
 
-# TODO: CREATE options list for books
+# TODO: CREATE ACCESS TO BOOK GENRE
+def access_book(book):
+    genre_choice = book
+
+    if genre_choice.lower() == "mystery":
+        print("{} Bookshelf".format(genre_choice).upper())
+        for key, value in mystery.items():
+            print("ISBN : {} , {}".format(key, value))
+
+        book_checkout = input(" \n Please type in ISBN to add to cart...>>").upper()
+        print(mystery[book_checkout])
+
+        # add isbn to new dictionary
+        return_add_books.update({book_checkout: mystery[book_checkout]})
+        print(" \n Added to Cart:ISBN: {}".format(mystery[book_checkout]))
+
+        # Remove book from Mystery bookshelf
+        mystery.pop(book_checkout, 'Key Not Found')
+
+        # print updated bookshelf with book removed
+        print("\n Mystery Bookshelf: ")
+        for key, value in mystery.items():
+            print("ISBN : {} , {}".format(key, value))
+
+        print('book cart test')
+        print(return_add_books)
+        book_options()
+    elif genre_choice.lower() == "fantasy":
+        print("{} Books".format(genre_choice))
+        for key, value in fantasy.items():
+            print("ISBN : {} , TITLE : {}".format(key, value))
+
+        book_checkout = input(" \n Please type in ISBN to add to cart...>>").upper()
+        print(fantasy[book_checkout])
+
+        # add isbn to new dictionary
+        return_add_books.update({book_checkout: fantasy[book_checkout]})
+        print(" \n Added to Cart:ISBN: {}".format(fantasy[book_checkout]))
+
+        # Remove book from Mystery bookshelf
+        fantasy.pop(book_checkout, 'Key Not Found')
+
+        # print updated bookshelf with book removed
+        print("\n Fantasy Bookshelf: ")
+        for key, value in fantasy.items():
+            print("ISBN : {} , {}".format(key, value))
+        book_options()
+    elif genre_choice.lower() == "romance":
+        print("{} Books".format(genre_choice))
+        for key, value in romance.items():
+            print("ISBN : {} , TITLE : {}".format(key, value))
+
+        book_checkout = input(" \n Please type in ISBN to add to cart...>>").upper()
+        print(romance[book_checkout])
+
+        # add isbn to new dictionary
+        return_add_books.update({book_checkout: romance[book_checkout]})
+        print(" \n Added to Cart:ISBN: {}".format(romance[book_checkout]))
+
+        # Remove book from Mystery bookshelf
+        romance.pop(book_checkout, 'Key Not Found')
+
+        # print updated bookshelf with book removed
+        print("\n Romance Bookshelf: ")
+        for key, value in romance.items():
+            print("ISBN : {} , {}".format(key, value))
+        book_options()
+    elif genre_choice.lower() == "textbook":
+        print("{} Books".format(genre_choice))
+        for key, value in textbook.items():
+            print("ISBN : {} , TITLE : {}".format(key, value))
+
+        book_checkout = input(" \n Please type in ISBN to add to cart...>>").upper()
+        print(textbook[book_checkout])
+
+        # add isbn to new dictionary
+        return_add_books.update({book_checkout: textbook[book_checkout]})
+        print(" \n Added to Cart:ISBN: {}".format(textbook[book_checkout]))
+
+        # Remove book from Mystery bookshelf
+        textbook.pop(book_checkout, 'Key Not Found')
+
+        # print updated bookshelf with book removed
+        print("\n Textbook Bookshelf: ")
+        for key, value in textbook.items():
+            print("ISBN : {} , {}".format(key, value))
+        book_options()
+    else:
+        print("Wrong Input, Please type your Genre Correctly...")
+
+
+# TODO: CREATE BOOK CHECKOUT
+def checkout():
+    book_checkout = input("Would you like to check out these books in your cart...\n>> [Y/N]   ")
+    if book_checkout == "Y" or "y":
+        for key, value in return_add_books.items():
+            # Prints out all books in cart
+            print("ISBN: {}: {}".format(key, value))
+            # counter for how many books user has
+            print('Total Books: {}'.format(len(return_add_books)))
+        print("Thank you and Happy Reading!")
+    elif book_checkout == "N" or "n":
+        book_options()
+    else:
+        print("Invalid..Try Again")
+        checkout()
+
+
+# TODO: CREATE BOOK return
+def return_book():
+    print("Cart: ")
+    for key, value in return_add_books.items():
+        print("{}: {}".format(key, value))
+
+    book_return = input("Please type in ISBN to return Item to Shelf...>>")
+
+
+
+    book_options()
+
+
+# TODO: CREATE BOOK SHOW
+def show_book():
+    print("Cart: ")
+    for key, value in return_add_books.items():
+        print("{}: {}".format(key, value))
+    print("Cart Total: {} items.".format(len(return_add_books)))
+    return library()
+
+
+# TODO: CREATE options for book functions
 def book_options():
     print(" \n Would you like to....[Please enter a Numeric Value]")
     print("1.Checkout Books")
@@ -104,98 +211,6 @@ def library():
             access_book(genre_choice)
         elif genre_choice.lower() == "show":
             show_book()
-
-
-# TODO: CREATE ACCESS TO BOOK GENRE
-def access_book(book):
-    genre_choice = book
-    user_book = []
-    if genre_choice.lower() == "mystery":
-        print("{} Bookshelf".format(genre_choice).upper())
-        for key, value in mystery.items():
-            print("ISBN : {} , {}".format(key, value))
-
-        book_checkout = input(" \n Please type in ISBN to add to cart...>>")
-
-        # add isbn to new dictionary
-        print(" \n Added to Cart: {}".format(mystery["{}".format(book_checkout)]))
-
-        # user_books.append(mystery["{}".format(book_checkout)])
-        test_book.update(mystery["{}".format(book_checkout)])
-
-        # remove book from library and list remaining books on bookshelf
-        mystery.pop('{}'.format(book_checkout), 'Key Not Found')
-        print("\n Mystery Bookshelf: ")
-        for key, value in mystery.items():
-            print("ISBN : {} , {}".format(key, value))
-        # print(mystery)
-
-        book_options()
-    elif genre_choice.lower() == "fantasy":
-        print("{} Books".format(genre_choice))
-        for key, value in fantasy.items():
-            print("ISBN : {} , TITLE : {}".format(key, value))
-        book_options()
-    elif genre_choice.lower() == "romance":
-        print("{} Books".format(genre_choice))
-        for key, value in romance.items():
-            print("ISBN : {} , TITLE : {}".format(key, value))
-        book_options()
-    elif genre_choice.lower() == "textbook":
-        print("{} Books".format(genre_choice))
-        for key, value in textbook.items():
-            print("ISBN : {} , TITLE : {}".format(key, value))
-        book_options()
-    else:
-        print("Wrong Input, Please type your Genre Correctly...")
-
-
-# TODO: CREATE BOOK CHECKOUT
-def checkout():
-    book_checkout = input("Would you like to check out these books in your cart...\n>> [Y/N]   ")
-    if book_checkout == "Y" or "y":
-        for key, value in test_book.items():
-            print("{}: {}".format(key, value))
-        print("Thank you and Happy Reading!")
-    elif book_checkout == "N" or "n":
-        book_options()
-    else:
-        print("Invalid..Try Again")
-        checkout()
-    # add isbn to new dictionary
-    # counter for how many books user has
-    # delete isbn from old dictionary
-
-
-# TODO: CREATE BOOK return
-def return_book():
-    print("Cart: ")
-    for key, value in test_book.items():
-        print("{}: {}".format(key, value))
-
-    book_return = input("Please type in ISBN to return Item to Shelf...>>")
-    if mystery[book_return] in mystery:
-        mystery.update(book_return)
-        # mystery['{}'.format(book_return)] = user_books[0]
-    for key, value in mystery.items():
-        print("ISBN : {} , {}".format(key, value))
-        mystery['{}'.format(book_return)] = {'TITLE': '{}', 'AUTHOR': '{}'.format(key, value)}
-    print(mystery)
-    book_options()
-
-
-# TODO: CREATE BOOK SHOW
-def show_book():
-    print("Cart: ")
-    for key, value in test_book.items():
-        print("{}: {}".format(key, value))
-    print("Cart Total: {} items.".format(len(test_book)))
-    return library()
-
-
-# TODO: CREATE COMPUTER FUNCTION
-def computer():
-    print("Welcome to the Computer Lab")
 
 
 # TODO: Create Menu to enter library or Computer lab
