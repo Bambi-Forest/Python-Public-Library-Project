@@ -6,24 +6,24 @@ mystery = {
 }
 
 fantasy = {
-    "2007": {'TITLE': 'The Queens Weapons', 'AUTHOR': 'Anne Bisho'},
-    "2008": {'TITLE': 'The Last Druid', 'AUTHOR': 'Terry Brooks'},
-    "2009": {'TITLE': 'A Deadly Education', 'AUTHOR': 'Naomi Novik'},
-    "2010": {'TITLE': 'Spy,Spy Again', 'AUTHOR': 'Mercedes Lackey'}
+    'I2007': {'TITLE': 'The Queens Weapons', 'AUTHOR': 'Anne Bisho'},
+    'I2008': {'TITLE': 'The Last Druid', 'AUTHOR': 'Terry Brooks'},
+    'I2009': {'TITLE': 'A Deadly Education', 'AUTHOR': 'Naomi Novik'},
+    'I2010': {'TITLE': 'Spy,Spy Again', 'AUTHOR': 'Mercedes Lackey'}
 }
 
 romance = {
-    "3002": {'TITLE': 'Pride and Prejudice', 'AUTHOR': 'Jane Austen'},
-    "3004": {'TITLE': 'Jane Eyre', 'AUTHOR': 'Charlotte Bronte'},
-    "3006": {'TITLE': 'Gone with the Wind', 'AUTHOR': 'Margaret Mitchell'},
-    "3008": {'TITLE': 'The Notebook', 'AUTHOR': 'Nicholas Sparks'}
+    'I3002': {'TITLE': 'Pride and Prejudice', 'AUTHOR': 'Jane Austen'},
+    'I3004': {'TITLE': 'Jane Eyre', 'AUTHOR': 'Charlotte Bronte'},
+    'I3006': {'TITLE': 'Gone with the Wind', 'AUTHOR': 'Margaret Mitchell'},
+    'I3008': {'TITLE': 'The Notebook', 'AUTHOR': 'Nicholas Sparks'}
 }
 
 textbook = {
-    "4003": {'TITLE': 'Python Crash Course', 'AUTHOR': 'Eric Matthews'},
-    "4004": {'TITLE': 'Automate the Boring Stuff with Python', 'AUTHOR': 'Al Sweigart'},
-    "4005": {'TITLE': 'Learning Python', 'AUTHOR': 'Mark Lutz'},
-    "4006": {'TITLE': 'Head-First Python', 'AUTHOR': 'Paul Barry'},
+    'I4003': {'TITLE': 'Python Crash Course', 'AUTHOR': 'Eric Matthews'},
+    'I4004': {'TITLE': 'Automate the Boring Stuff with Python', 'AUTHOR': 'Al Sweigart'},
+    'I4005': {'TITLE': 'Learning Python', 'AUTHOR': 'Mark Lutz'},
+    'I4006': {'TITLE': 'Head-First Python', 'AUTHOR': 'Paul Barry'},
 }
 
 # TODO: Create empty dictionary to add and return books
