@@ -45,7 +45,9 @@ def access_book(book):
             print("ISBN : {} , {}".format(key, value))
 
         book_checkout = input(" \n Please type in ISBN to add to cart...>>").upper()
+
         print(mystery[book_checkout])
+
 
         # add isbn to new dictionary
         return_add_books.update({book_checkout: mystery[book_checkout]})
@@ -59,8 +61,8 @@ def access_book(book):
         for key, value in mystery.items():
             print("ISBN : {} , {}".format(key, value))
 
-        print('book cart test')
-        print(return_add_books)
+        # print('Cart:')
+        # print(return_add_books)
         book_options()
     elif genre_choice.lower() == "fantasy":
         print("{} Books".format(genre_choice))
@@ -68,6 +70,7 @@ def access_book(book):
             print("ISBN : {} , TITLE : {}".format(key, value))
 
         book_checkout = input(" \n Please type in ISBN to add to cart...>>").upper()
+
         print(fantasy[book_checkout])
 
         # add isbn to new dictionary
@@ -88,6 +91,7 @@ def access_book(book):
             print("ISBN : {} , TITLE : {}".format(key, value))
 
         book_checkout = input(" \n Please type in ISBN to add to cart...>>").upper()
+
         print(romance[book_checkout])
 
         # add isbn to new dictionary
@@ -108,6 +112,7 @@ def access_book(book):
             print("ISBN : {} , TITLE : {}".format(key, value))
 
         book_checkout = input(" \n Please type in ISBN to add to cart...>>").upper()
+
         print(textbook[book_checkout])
 
         # add isbn to new dictionary
@@ -149,9 +154,20 @@ def return_book():
     for key, value in return_add_books.items():
         print("{}: {}".format(key, value))
 
-    book_return = input("Please type in ISBN to return Item to Shelf...>>")
+    book_return = input("Please type in ISBN to return Item to Shelf...>>").upper()
+    for key, value in return_add_books.items():
+        while book_return != key:
+            book_checkout = input(" \n Please type in ISBN to return Item to Shelf...>>").upper()
+        else:
+            break
+    for key, value in return_add_books.items():
+        if book_return == key:
+            if book_return in mystery:
+                mystery.update({book_return: mystery[book_return]})
+                print(" \n Returned to Library:ISBN: {}".format(mystery[book_return]))
 
-
+                # Remove book from Mystery bookshelf
+                return_add_books.pop(book_return, 'Key Not Found')
 
     book_options()
 
@@ -162,7 +178,7 @@ def show_book():
     for key, value in return_add_books.items():
         print("{}: {}".format(key, value))
     print("Cart Total: {} items.".format(len(return_add_books)))
-    return library()
+    return book_options()
 
 
 # TODO: CREATE options for book functions
@@ -198,19 +214,16 @@ def book_options():
 
 # TODO: CREATE LIBRARY FUNCTION
 def library():
-    print("Welcome to Library Department,type in your Genre OR" " SHOW " "to view Cart")
+    print("Welcome to Library Department,type in your Genre....")
     print("1.Mystery")
     print("2.Fantasy")
     print("3.Romance")
     print("4.Textbook")
-    print("5.SHOW")
 
     while True:
-        genre_choice = str(input("> "))
+        genre_choice = str(input(">"))
         if genre_choice.lower() == ("mystery" and "fantasy") or ("romance" and "textbook"):
             access_book(genre_choice)
-        elif genre_choice.lower() == "show":
-            show_book()
 
 
 # TODO: Create Menu to enter library or Computer lab
