@@ -48,7 +48,6 @@ def access_book(book):
 
         print(mystery[book_checkout])
 
-
         # add isbn to new dictionary
         return_add_books.update({book_checkout: mystery[book_checkout]})
         print(" \n Added to Cart:ISBN: {}".format(mystery[book_checkout]))
@@ -133,15 +132,15 @@ def access_book(book):
 
 # TODO: CREATE BOOK CHECKOUT
 def checkout():
-    book_checkout = input("Would you like to check out these books in your cart...\n>> [Y/N]   ")
-    if book_checkout == "Y" or "y":
+    book_checkout = str(input("Would you like to check out these books in your cart...\n>> [Y/N]>"))
+    if book_checkout == "Y":
         for key, value in return_add_books.items():
             # Prints out all books in cart
             print("ISBN: {}: {}".format(key, value))
             # counter for how many books user has
-            print('Total Books: {}'.format(len(return_add_books)))
+        print('Total Books: {}'.format(len(return_add_books)))
         print("Thank you and Happy Reading!")
-    elif book_checkout == "N" or "n":
+    elif book_checkout == "N":
         book_options()
     else:
         print("Invalid..Try Again")
@@ -149,25 +148,25 @@ def checkout():
 
 
 # TODO: CREATE BOOK return
-def return_book():
+def return_book(a=mystery, b=fantasy, c=romance, d=textbook):
     print("Cart: ")
     for key, value in return_add_books.items():
         print("{}: {}".format(key, value))
 
     book_return = input("Please type in ISBN to return Item to Shelf...>>").upper()
-    for key, value in return_add_books.items():
-        while book_return != key:
-            book_checkout = input(" \n Please type in ISBN to return Item to Shelf...>>").upper()
+    for key, value in a.items():
+        while book_return == key[0:]:
+            print("hi")
         else:
-            break
-    for key, value in return_add_books.items():
-        if book_return == key:
-            if book_return in mystery:
-                mystery.update({book_return: mystery[book_return]})
-                print(" \n Returned to Library:ISBN: {}".format(mystery[book_return]))
+            # remove book from cart
+            return_add_books.pop(book_return, 'Key Not Found')
+            # return book to library shelf
+            mystery.update({book_return: mystery[book_return]})
+            print(" \n Returned to Library:ISBN: {}".format(mystery[book_return]))
 
-                # Remove book from Mystery bookshelf
-                return_add_books.pop(book_return, 'Key Not Found')
+            print(key[0:])
+            print(a)
+            break
 
     book_options()
 
