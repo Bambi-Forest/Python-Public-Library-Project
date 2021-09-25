@@ -3,5 +3,9 @@ Created a public Library Script that is ongoing. My First Large Python script si
 Functions:
 Select a genre, integrates books to cart, shows books in cart, shows updated bookshelf, returns books, and check out books.
 
-Needs Fixing: Return Book function not functional and making code more enhanced
+Needs Fixing: 
+- Return Book function not working properly
+- Enhance code features
+
+![Alt Text](C:\Users\13375\Desktop\publicLibrary\part1.png)
 
