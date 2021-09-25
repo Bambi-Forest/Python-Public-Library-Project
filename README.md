@@ -7,5 +7,5 @@ Needs Fixing:
 - Return Book function not working properly
 - Enhance code features
 
-![Alt Text](C:\Users\13375\Desktop\publicLibrary\part1.png)
+![](publicLibrary/part1.png)
 
